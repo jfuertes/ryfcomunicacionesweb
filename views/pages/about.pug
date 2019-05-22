@@ -1,0 +1,99 @@
+extends ../layout/home.pug
+
+block view
+
+  section.featured-img.text-center.about-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 Acerca de
+            ul
+              li
+                a(href='index') Inicio
+              li
+                span -
+              li
+                span Nosotros
+  // PAGE CONTENT START
+
+  section.page-content
+    .container.page-content-wrapper
+      .row
+        .col-sm-12
+          p
+           b
+           | R&F Comunicaciones es una Empresa Peruana fundada en el año 2010, está conformada por personal altamente especializado en las áreas de telecomunicaciones, redes de distribución eléctrica, cableado eléctrico, telefónico y estructurado, pozos a tierra, sistemas de aire acondicionado y sistemas de video vigilancia.
+           | Nos dedicamos a la asesoría, suministros, servicios y proyectos integrales para la pequeña, mediana y gran empresa.
+           | Su amplia oferta incluye servicios especializados con valor agregado como consultoría, suministro de equipamiento de última generación, integración, desarrollo e implementación de soluciones, servicio técnico y soporte post-venta.
+
+  p
+    |  
+    .container.page-content-wrapper
+      .row
+        .col-sm-6
+          .page-slider
+            .simple-slider.owl-carousel
+              img(src='assets/images/nosotros/esencia-1.jpg', alt='Nuestros Objectivos')
+
+        .col-sm-6
+          .inner-content.gallery
+            h1 NUESTROS OBJETIVOS
+            p
+              | Consolidamos como la mejor empresa en Sistemas de Electricidad Industrial y Telecomunicaciones alcanzando en el corto tiempo nuestros planes estrategicos en el mercado. Brindando altos niveles de exelencia y satistaccion en valor agregado de nuestro producto y servicios que brindamos a nuestros clientes, estableciendo como base una relacion de confianza y transparencia.
+          
+  p
+    |  <br/>
+    |  <br/>
+  .container.page-content-wrapper
+    .row
+      .col-sm-6
+        .inner-content.gallery
+          h1 MISION
+          p
+            | Ofrecer un servicio integral, de calidad, confiable y de constante innovación, desde la asesoría técnica, diseño, instalación y puesta en marcha, orientado a satisfacer las necesidades y aspiraciones de nuestros clientes, y acompañados con equipos de última generación.
+
+          
+      .col-sm-6
+        .page-slider
+          .simple-slider.owl-carousel
+            img(src='assets/images/nosotros/esencia-3.jpg', alt='MISION')
+  p
+    |  <br/>
+    |  <br/>
+  .container.page-content-wrapper
+    .row
+      .col-sm-6
+        .page-slider
+          .simple-slider.owl-carousel
+            img(src='assets/images/nosotros/esencia-2.jpg', alt='VISION')
+            
+      .col-sm-6
+        .inner-content.gallery
+          h1 VISION
+          p
+            | Posicionarnos como empresa líder a nivel local y nacional, en servicios y soluciones tecnológicas de vanguardia, que conlleven a la mejora de la calidad de vida de las personas y total satisfacción de nuestros Clientes.
+
+  p
+    |  <br/>
+  // PAGE CONTENT END
+  // ABOUT SECTION START
+  section#about.section-wrapper.gray-background
+    .container
+      .row
+        //.col-lg-4.heding-wrapper.text-center.scale-less.animate-in
+          span Los mejores precios,
+          h2 SOMOS INTEGRADORES DE LA MARCA:
+          span.spliter
+          img(src='assets/images/schneider.png', alt='VISION')
+
+        //.col-lg-8.heding-wrapper.text-center.scale-less.animate-in
+          h3 Politica de calidad, seguridad, salud y medio ambiente:
+          iframe(src='assets/manual.pdf', frameborder='0', width='655', height='550', marginheight='0', marginwidth='0', id='pdf')
+
+        
+        
+  
+
+  // ABOUT SECTION END

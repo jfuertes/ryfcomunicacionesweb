@@ -1,0 +1,343 @@
+meta(charset='UTF-8')
+title RYF| Inicio
+link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Asap:400,700', type='text/css')
+link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type='text/css')
+link(rel='stylesheet', href='assets/plugins/lightbox2-master/dist/css/lightbox.min.css', type='text/css')
+link(rel='stylesheet', href='assets/plugins/prettyPhoto/prettyPhoto.css', type='text/css')
+link(rel='stylesheet', href='assets/plugins/OwlCarousel2-master/dist/assets/owl.carousel.min.css', type='text/css')
+link(rel='stylesheet', href='assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css', type='text/css')
+link(rel='stylesheet', href='assets/css/full-menu.css', type='text/css')
+link(rel='icon'     , href="assets/images/iconOriginal.png",  type="image/x-icon")
+
+link(rel='stylesheet', href='assets/css/imagehover.min.css', type='text/css')
+link(rel='stylesheet', href='assets/css/style.css', type='text/css')
+link(rel='stylesheet', href='assets/css/second-color.css', type='text/css')
+link#color-file(rel='stylesheet', href='assets/css/colors/blue.css', type='text/css')
+link(rel='stylesheet', href='assets/css/loader.css', type='text/css')
+link(rel='stylesheet', href='assets/font-awesome/css/font-awesome.min.css', type='text/css')
+meta(name='viewport', content='initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no')
+//if lt IE 9
+    script(src='assets/js/html5.js')
+    script(src='assets/js/respond.js')
+//if gte IE 9
+    style(type='text/css').
+    .gradient {
+    filter: none;
+    }
+// SMART SLIDER 3 STYLES AND INITIALIZE SCRIPTS
+link(rel='stylesheet', type='text/css', href='assets/slider/css/normalize.min.css', media='screen, print')
+link(rel='stylesheet', type='text/css', href='assets/slider/css/n2-ss-10.css', media='screen, print')
+style(type='text/css').
+    .n2-ss-spinner-simple-white-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -20px;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 1000;
+    }
+    .n2-ss-spinner-simple-white {
+    outline: 1px solid RGBA(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    }
+    .n2-ss-spinner-simple-white:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -11px;
+    margin-left: -11px;
+    }
+    .n2-ss-spinner-simple-white:not(:required):before {
+    content: '';
+    border-radius: 50%;
+    border-top: 2px solid #333;
+    border-right: 2px solid transparent;
+    animation: n2SimpleWhite .6s linear infinite;
+    -webkit-animation: n2SimpleWhite .6s linear infinite;
+    }
+    @keyframes n2SimpleWhite {
+    to {
+    transform: rotate(360deg);
+    }
+    }
+    @-webkit-keyframes n2SimpleWhite {
+    to {
+    -webkit-transform: rotate(360deg);
+    }
+    }
+script(type='text/javascript').
+    window.N2PRO = 1;
+    window.N2GSAP = 1;
+    window.N2PLATFORM = "wordpress";
+    window.nextend = {
+    localization: {},
+    deferreds: [],
+    loadScript: function(url) {
+    n2jQuery.ready(function() {
+    var d = n2.Deferred();
+    nextend.deferreds.push(d);
+    n2.ajax({
+    url: url,
+    dataType: "script",
+    cache: true,
+    complete: function() {
+    setTimeout(function() {
+    d.resolve()
+    })
+    }
+    })
+    })
+    },
+    ready: function(cb) {
+    n2.when.apply(n2, nextend.deferreds).done(function() {
+    cb.call(window, n2)
+    })
+    }
+    };
+    window.N2SSPRO = 1;
+    window.N2SS3C = "smartslider3";
+    nextend.fontsLoaded = false;
+    nextend.fontsLoadedActive = function() {
+    nextend.fontsLoaded = true;
+    };
+    var fontData = {
+    google: {
+    families: ["Roboto:300,400:latin"]
+    },
+    active: function() {
+    nextend.fontsLoadedActive()
+    },
+    inactive: function() {
+    nextend.fontsLoadedActive()
+    }
+    };
+    if (typeof WebFontConfig !== 'undefined') {
+    var _WebFontConfig = WebFontConfig;
+    for (var k in WebFontConfig) {
+    if (k == 'active') {
+    fontData.active = function() {
+    nextend.fontsLoadedActive();
+    _WebFontConfig.active();
+    }
+    } else if (k == 'inactive') {
+    fontData.inactive = function() {
+    nextend.fontsLoadedActive();
+    _WebFontConfig.inactive();
+    }
+    } else if (k == 'google') {
+    if (typeof WebFontConfig.google.families !== 'undefined') {
+    for (var i = 0; i < WebFontConfig.google.families.length; i++) {
+    fontData.google.families.push(WebFontConfig.google.families[i]);
+    }
+    }
+    } else {
+    fontData[k] = WebFontConfig[k];
+    }
+    }
+    }
+    if (typeof WebFont === 'undefined') {
+    window.WebFontConfig = fontData;
+    } else {
+    WebFont.load(fontData);
+    }
+script(type='text/javascript', src='assets/slider/js/n2.js')
+script(type='text/javascript', src='assets/slider/js/nextend-gsap.min.js')
+script(type='text/javascript', src='assets/slider/js/nextend-frontend.min.js')
+script(type='text/javascript', src='assets/slider/js/smartslider-frontend.min.js')
+script(type='text/javascript', src='assets/slider/js/smartslider-simple-type-frontend.min.js')
+script(type='text/javascript', src='assets/slider/js/nextend-webfontloader.min.js')
+script(type='text/javascript', src='assets/slider/js/n2-ss-10.js')
+script(type='text/javascript').
+    window.n2jQuery.ready((function($) {
+    window.nextend.ready(function() {
+    nextend.fontsDeferred = n2.Deferred();
+    if (nextend.fontsLoaded) {
+    nextend.fontsDeferred.resolve();
+    } else {
+    nextend.fontsLoadedActive = function() {
+    nextend.fontsLoaded = true;
+    nextend.fontsDeferred.resolve();
+    };
+    var intercalCounter = 0;
+    nextend.fontInterval = setInterval(function() {
+    if (intercalCounter > 3 || document.documentElement.className.indexOf('wf-active') !== -1) {
+    nextend.fontsLoadedActive();
+    clearInterval(nextend.fontInterval);
+    }
+    intercalCounter++;
+    }, 1000);
+    }
+    new N2Classes.SmartSliderSimple('#n2-ss-10', {
+    "admin": false,
+    "translate3d": 1,
+    "callbacks": "",
+    "randomize": {
+    "randomize": 0,
+    "randomizeFirst": 0
+    },
+    "align": "normal",
+    "isDelayed": 0,
+    "load": {
+    "fade": 1,
+    "scroll": 0
+    },
+    "playWhenVisible": 1,
+    "playWhenVisibleAt": 0.5,
+    "responsive": {
+    "desktop": 1,
+    "tablet": 1,
+    "mobile": 1,
+    "onResizeEnabled": true,
+    "type": "fullwidth",
+    "downscale": 1,
+    "upscale": 1,
+    "minimumHeight": 0,
+    "maximumHeight": 3000,
+    "maximumSlideWidth": 3000,
+    "maximumSlideWidthLandscape": 3000,
+    "maximumSlideWidthTablet": 3000,
+    "maximumSlideWidthTabletLandscape": 3000,
+    "maximumSlideWidthMobile": 3000,
+    "maximumSlideWidthMobileLandscape": 3000,
+    "maximumSlideWidthConstrainHeight": 0,
+    "forceFull": 1,
+    "forceFullHorizontalSelector": "",
+    "constrainRatio": 1,
+    "verticalOffsetSelectors": "",
+    "focusUser": 0,
+    "focusAutoplay": 0,
+    "deviceModes": {
+    "desktopPortrait": 1,
+    "desktopLandscape": 0,
+    "tabletPortrait": 1,
+    "tabletLandscape": 0,
+    "mobilePortrait": 1,
+    "mobileLandscape": 0
+    },
+    "normalizedDeviceModes": {
+    "unknownUnknown": ["unknown", "Unknown"],
+    "desktopPortrait": ["desktop", "Portrait"],
+    "desktopLandscape": ["desktop", "Portrait"],
+    "tabletPortrait": ["tablet", "Portrait"],
+    "tabletLandscape": ["tablet", "Portrait"],
+    "mobilePortrait": ["mobile", "Portrait"],
+    "mobileLandscape": ["mobile", "Portrait"]
+    },
+    "verticalRatioModifiers": {
+    "unknownUnknown": 1,
+    "desktopPortrait": 1,
+    "desktopLandscape": 1,
+    "tabletPortrait": 1,
+    "tabletLandscape": 1,
+    "mobilePortrait": 1,
+    "mobileLandscape": 1
+    },
+    "minimumFontSizes": {
+    "desktopPortrait": 1,
+    "desktopLandscape": 1,
+    "tabletPortrait": 1,
+    "tabletLandscape": 1,
+    "mobilePortrait": 1,
+    "mobileLandscape": 1
+    },
+    "ratioToDevice": {
+    "Portrait": {
+    "tablet": 0.7,
+    "mobile": 0.5
+    },
+    "Landscape": {
+    "tablet": 0,
+    "mobile": 0
+    }
+    },
+    "sliderWidthToDevice": {
+    "desktopPortrait": 1920,
+    "desktopLandscape": 1920,
+    "tabletPortrait": 1344,
+    "tabletLandscape": 0,
+    "mobilePortrait": 960,
+    "mobileLandscape": 0
+    },
+    "basedOn": "combined",
+    "tabletPortraitScreenWidth": 800,
+    "mobilePortraitScreenWidth": 440,
+    "tabletLandscapeScreenWidth": 800,
+    "mobileLandscapeScreenWidth": 440,
+    "orientationMode": "width_and_height",
+    "scrollFix": 0,
+    "overflowHiddenPage": 0,
+    "desktopPortraitScreenWidth": 1200
+    },
+    "controls": {
+    "scroll": 0,
+    "drag": 1,
+    "touch": "horizontal",
+    "keyboard": 1,
+    "tilt": 0
+    },
+    "lazyLoad": 0,
+    "lazyLoadNeighbor": 0,
+    "blockrightclick": 0,
+    "maintainSession": 0,
+    "autoplay": {
+    "enabled": 1,
+    "start": 1,
+    "duration": 2000,
+    "autoplayToSlide": -1,
+    "autoplayToSlideIndex": -1,
+    "allowReStart": 0,
+    "pause": {
+    "click": 0,
+    "mouse": "enter",
+    "mediaStarted": 1
+    },
+    "resume": {
+    "click": 0,
+    "mouse": "0",
+    "mediaEnded": 1,
+    "slidechanged": 0
+    }
+    },
+    "layerMode": {
+    "playOnce": 0,
+    "playFirstLayer": 1,
+    "mode": "skippable",
+    "inAnimation": "mainInEnd"
+    },
+    "parallax": {
+    "enabled": 1,
+    "mobile": 0,
+    "is3D": 0,
+    "animate": 1,
+    "horizontal": "mouse",
+    "vertical": "mouse",
+    "origin": "slider",
+    "scrollmove": "both"
+    },
+    "background.parallax.tablet": 1,
+    "background.parallax.mobile": 1,
+    "postBackgroundAnimations": 0,
+    "initCallbacks": [],
+    "allowBGImageAttachmentFixed": false,
+    "bgAnimations": 0,
+    "mainanimation": {
+    "type": "horizontal",
+    "duration": 800,
+    "delay": 0,
+    "ease": "easeOutQuad",
+    "parallax": 1,
+    "shiftedBackgroundAnimation": "auto"
+    },
+    "carousel": 1,
+    "dynamicHeight": 0
+    });
+    new N2Classes.SmartSliderWidgetArrowImage("n2-ss-10", 1, 0.7, 0.5);
+    });
+    }));

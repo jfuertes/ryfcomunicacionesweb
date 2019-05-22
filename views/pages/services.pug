@@ -1,0 +1,162 @@
+extends ../layout/home.pug
+block view
+  // HEADER END
+  section.featured-img.text-center.services-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 OUR SERVICES
+            ul
+              li
+                a(href='index.html') Home
+              li
+                span -
+              li
+                span Services
+  // PAGE CONTENT START
+  section.page-content.pb50
+    .container.page-content-wrapper
+      .row
+        .col-sm-6
+          .inner-content.gallery
+            h1.bottom-40 We Craft Digital Experience
+            strong.inner-string
+              | Consectetur adipiscing elit. Fusce nisi enim, Vulpu tate at Justo tristique, Tempor Sagittis Dolor.
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit.Sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis no strud exercitation ullamco Cum sociis natoque penatibus et magnis dis parturient montes, nasc etur ridiculus mus. Donec sit amet ligula consequat urna posuere convallis.Cras porta dolor ut velit imperdiet, quis sodales tellus facilisis. Vestibulum magna turpis, tincidun blandit semper lorem. Donec sit amet ligula consequat urna posuere convallis.Vestibulum magna turpis, tincidun blandit semper lorem. Donec sit amet ligula consequat urna posuere. Vestibulum magna turpis, tincidun blandit semper lorem.
+        .col-sm-6
+          .inner-content.services-inner.text-center
+            .row
+              .col-lg-6.small-services.equal-height
+                .gray-background
+                  i.fa.fa-heart
+                  span Pellentesque in Ipsum id Orci Porta Curabitur Aliquet Quam
+              .col-lg-6.small-services.equal-height
+                .gray-background
+                  i.fa.fa-star
+                  span Pellentesque in Ipsum id Orci Porta Curabitur Aliquet Quam
+              .col-lg-6.small-services.equal-height
+                .gray-background
+                  i.fa.fa-lightbulb-o
+                  span Pellentesque in Ipsum id Orci Porta Curabitur Aliquet Quam
+              .col-lg-6.small-services.equal-height
+                .gray-background
+                  i.fa.fa-rocket
+                  span Pellentesque in Ipsum id Orci Porta Curabitur Aliquet Quam
+  // SERVICES SECTION START
+  section#services.section-wrapper.gray-background
+    .container
+      .row
+        .col-lg-12.heding-wrapper.text-center.scale-less.animate-in
+          span WHAT WE DO
+          h2 Our Creative Services
+          span.spliter
+      ul.row.services-container
+        li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+          figure.imghvr-shutter-out-horiz
+            img.img-responsive(src='assets/images/services-1.jpg', alt='service1')
+            figcaption.info
+              .table
+                .table-row
+                  .table-cell.text-center.align-middle
+                    .subtitle Lorem Ipsum
+                    .title Web Designing Services
+                    .description Aenean commodo ligula eget dolor. Aenean massa.
+                    a.btn.transparent.mt20(href='services-detail.html') Detailed
+        li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+          figure.imghvr-shutter-out-horiz
+            img.img-responsive(src='assets/images/services-2.jpg', alt='service2')
+            figcaption.info
+              .table
+                .table-row
+                  .table-cell.text-center.align-middle
+                    .subtitle Lorem Ipsum
+                    .title Web Designing Services
+                    .description Aenean commodo ligula eget dolor. Aenean massa.
+                    a.btn.transparent.mt20(href='services-detail.html') Detailed
+        li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+          figure.imghvr-shutter-out-horiz
+            img.img-responsive(src='assets/images/services-3.jpg', alt='service3')
+            figcaption.info
+              .table
+                .table-row
+                  .table-cell.text-center.align-middle
+                    .subtitle Lorem Ipsum
+                    .title Web Designing Services
+                    .description Aenean commodo ligula eget dolor. Aenean massa.
+                    a.btn.transparent.mt20(href='services-detail.html') Detailed
+        .clearfix.sm-portfolio
+        li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+          figure.imghvr-shutter-out-horiz
+            img.img-responsive(src='assets/images/services-4.jpg', alt='service4')
+            figcaption.info
+              .table
+                .table-row
+                  .table-cell.text-center.align-middle
+                    .subtitle Lorem Ipsum
+                    .title Web Designing Services
+                    .description Aenean commodo ligula eget dolor. Aenean massa.
+                    a.btn.transparent.mt20(href='services-detail.html') Detailed
+        li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+          figure.imghvr-shutter-out-horiz
+            img.img-responsive(src='assets/images/services-5.jpg', alt='service5')
+            figcaption.info
+              .table
+                .table-row
+                  .table-cell.text-center.align-middle
+                    .subtitle Lorem Ipsum
+                    .title Web Designing Services
+                    .description Aenean commodo ligula eget dolor. Aenean massa.
+                    a.btn.transparent.mt20(href='services-detail.html') Detailed
+        li.col-lg-4.col-md-4.col-sm-6.col-xs-12
+          figure.imghvr-shutter-out-horiz
+            img.img-responsive(src='assets/images/services-6.jpg', alt='service6')
+            figcaption.info
+              .table
+                .table-row
+                  .table-cell.text-center.align-middle
+                    .subtitle Lorem Ipsum
+                    .title Web Designing Services
+                    .description Aenean commodo ligula eget dolor. Aenean massa.
+                    a.btn.transparent.mt20(href='services-detail.html') Detailed
+  // SERVICES SECTION END
+  // TESTIMONIALS SECTION START
+  section
+    .testimonial-wrapper.parallax(data-stellar-background-ratio='0.1', style='background-image: url(assets/images/testimonial-bg.jpg);')
+      .overlay
+        .container
+          .row
+            .testimonial-slider.owl-carousel.owl-theme.col-md-8.col-sm-12
+              .item
+                .avatar
+                  .author
+                    img(src='assets/images/testimonial-1.jpg', alt='avatar', width='70', height='70')
+                .testimonial-content
+                  .name JACK LONDON
+                  .job Graphic Designer
+                  span.spliter
+                  div
+                    | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+              .item
+                .avatar
+                  .author
+                    img(src='assets/images/testimonial-1.jpg', alt='avatar', width='70', height='70')
+                .testimonial-content
+                  .name JACK LONDON
+                  .job Graphic Designer
+                  span.spliter
+                  div
+                    | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+              .item
+                .avatar
+                  .author
+                    img(src='assets/images/testimonial-1.jpg', alt='avatar', width='70', height='70')
+                .testimonial-content
+                  .name JACK LONDON
+                  .job Graphic Designer
+                  span.spliter
+                  div
+                    | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+  // TESTIMONIALS SECTION END

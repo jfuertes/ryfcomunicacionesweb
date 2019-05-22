@@ -1,0 +1,90 @@
+extends ../layout/home.pug
+
+block view
+
+  // HEADER END
+  section.featured-img.text-center.contact-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 CONTACTANOS
+            ul
+              li
+                a(href='index.html') Inicio
+              li
+                span -
+              li
+                span Contacto
+  // PAGE CONTENT START
+  section.page-content.contact-wrapper
+    .container.page-content-wrapper
+      .row.contact-holder
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.contact-detail.col-md-push-8
+          .heding-wrapper.text-left.contact-page-ops
+            span.heading-spn Contacto:
+            span.spliter
+          .detail-holder.table
+            .table-row
+              .left-detail.table-cell.align-middle
+                span.scale-big.animate-in
+                  i.fa.fa-map-marker
+                .clearfix
+                span.small-spliter.animate-in.spliter
+              .right-detail.table-cell.align-middle
+                span Calle 9 Mz.Q.Lt.66 - Urb:Señor de los Milagros, San Martin de Porres, Lima. 
+          .detail-holder.table
+            .table-row
+              .left-detail.table-cell.align-middle
+                span.scale-big.animate-in
+                  i.fa.fa-envelope-o
+                .clearfix
+                span.small-spliter.animate-in.spliter
+              .right-detail.table-cell.align-middle
+                span
+                  a(href='mailto:ventas@ryfcomunicaciones.com') ventas@ryfcomunicaciones.com
+          .detail-holder.table
+            .table-row
+              .left-detail.table-cell.align-middle
+                span.scale-big.animate-in
+                  i.fa.fa-phone
+                .clearfix
+                span.small-spliter.animate-in.spliter
+              .right-detail.table-cell.align-middle
+                span
+                  | Movistar: 995676244 
+                  br
+                  | Claro: 991224300
+                  br
+                  | 				Central:(01)  5097400
+          // MAP SECTION START
+          section.map-container
+            #map-canvas
+          // MAP SECTION END
+        .col-lg-8.col-md-8.col-sm-12.col-xs-12.col-md-pull-4
+          .row
+            .col-md-9
+              p
+                | Para nosotros es un placer atenderlo, si esta interesado en alguno de nuestros productos o servicios, sírvase contactarse con nosotros a través del siguiente formulario.
+                | (01) 5097400
+
+          form(action="addMessage", method="post")
+            div.form-group
+              label Nombres y Apellidos *
+              input.form-control(type='text', name='name',placeholder='nombre', required='')
+            div.form-group
+              label Empresa *
+              input.form-control(type='empresa', name='empresa',placeholder='empresa', required='')  
+            div.form-group
+              label Telefono *
+              input.form-control(type='telefono', name='telefono',placeholder='xxx xxx xxx', required='')  
+            div.form-group
+              label Email *
+              input.form-control(type='email', name='email',placeholder='user@empresa.com', required='')
+            div.form-group
+              label Mensaje *
+              textarea.form-control(name='message', required='')
+            div.form-group
+              button.btn(type='submit', value='Enviar') Enviar
+  // PAGE CONTENT END

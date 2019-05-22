@@ -1,0 +1,34 @@
+extends ../layout/home.pug
+block view
+
+    
+    .title-node
+        .blck-bg-title
+            .col-sm-12
+        h1.page-header Formulario de inscripción
+    .main-container
+        .row
+            section
+                a#main-content
+                .titlenoticia(style='display:none;')
+                    h2.page-header Formulario de contacto
+                .region.region-content
+                    section#block-system-main.block.block-system.clearfix
+                        table.table.table-responsive-sm.table-striped
+                            thead
+                                tr
+                                    th .
+                                    th Nombre
+                                    th Correo
+                                    th Mensaje
+                            tbody
+                                for curso in cursos
+                                    tr
+                                        td=curso.id
+                                        td= curso.nombre
+                                        td= curso.email
+                                        td= curso.consulta      
+        .list-cursos
+    .container
+        .col-sm-12
+    .container

@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Tech HTML</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css" media="screen, print" />
+    <link rel="stylesheet" type="text/css" href="css/n2-ss-10.css" media="screen, print" />
+    <style type="text/css">
+        .n2-ss-spinner-simple-white-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -20px;
+            background: #fff;
+            width: 20px;
+            height: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 1000;
+        }
+
+        .n2-ss-spinner-simple-white {
+            outline: 1px solid RGBA(0, 0, 0, 0);
+            width: 100%;
+            height: 100%;
+        }
+
+        .n2-ss-spinner-simple-white:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -11px;
+            margin-left: -11px;
+        }
+
+        .n2-ss-spinner-simple-white:not(:required):before {
+            content: '';
+            border-radius: 50%;
+            border-top: 2px solid #333;
+            border-right: 2px solid transparent;
+            animation: n2SimpleWhite .6s linear infinite;
+            -webkit-animation: n2SimpleWhite .6s linear infinite;
+        }
+
+        @keyframes n2SimpleWhite {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes n2SimpleWhite {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        window.N2PRO = 1;
+        window.N2GSAP = 1;
+        window.N2PLATFORM = "wordpress";
+        window.nextend = {
+            localization: {},
+            deferreds: [],
+            loadScript: function(url) {
+                n2jQuery.ready(function() {
+                    var d = n2.Deferred();
+                    nextend.deferreds.push(d);
+                    n2.ajax({
+                        url: url,
+                        dataType: "script",
+                        cache: true,
+                        complete: function() {
+                            setTimeout(function() {
+                                d.resolve()
+                            })
+                        }
+                    })
+                })
+            },
+            ready: function(cb) {
+                n2.when.apply(n2, nextend.deferreds).done(function() {
+                    cb.call(window, n2)
+                })
+            }
+        };
+        window.N2SSPRO = 1;
+        window.N2SS3C = "smartslider3";
+        nextend.fontsLoaded = false;
+        nextend.fontsLoadedActive = function() {
+            nextend.fontsLoaded = true;
+        };
+        var fontData = {
+            google: {
+                families: ["Roboto:300,400:latin"]
+            },
+            active: function() {
+                nextend.fontsLoadedActive()
+            },
+            inactive: function() {
+                nextend.fontsLoadedActive()
+            }
+        };
+        if (typeof WebFontConfig !== 'undefined') {
+            var _WebFontConfig = WebFontConfig;
+            for (var k in WebFontConfig) {
+                if (k == 'active') {
+                    fontData.active = function() {
+                        nextend.fontsLoadedActive();
+                        _WebFontConfig.active();
+                    }
+                } else if (k == 'inactive') {
+                    fontData.inactive = function() {
+                        nextend.fontsLoadedActive();
+                        _WebFontConfig.inactive();
+                    }
+                } else if (k == 'google') {
+                    if (typeof WebFontConfig.google.families !== 'undefined') {
+                        for (var i = 0; i < WebFontConfig.google.families.length; i++) {
+                            fontData.google.families.push(WebFontConfig.google.families[i]);
+                        }
+                    }
+                } else {
+                    fontData[k] = WebFontConfig[k];
+                }
+            }
+        }
+        if (typeof WebFont === 'undefined') {
+            window.WebFontConfig = fontData;
+        } else {
+            WebFont.load(fontData);
+        }
+    </script>
+    <script type="text/javascript" src="js/n2.js"></script>
+    <script type="text/javascript" src="js/nextend-gsap.min.js"></script>
+    <script type="text/javascript" src="js/nextend-frontend.min.js"></script>
+    <script type="text/javascript" src="js/smartslider-frontend.min.js"></script>
+    <script type="text/javascript" src="js/smartslider-simple-type-frontend.min.js"></script>
+    <script type="text/javascript" src="js/nextend-webfontloader.min.js"></script>
+    <script type="text/javascript" src="js/n2-ss-10.js"></script>
+    <script type="text/javascript">
+        window.n2jQuery.ready((function($) {
+            window.nextend.ready(function() {
+
+                nextend.fontsDeferred = n2.Deferred();
+                if (nextend.fontsLoaded) {
+                    nextend.fontsDeferred.resolve();
+                } else {
+                    nextend.fontsLoadedActive = function() {
+                        nextend.fontsLoaded = true;
+                        nextend.fontsDeferred.resolve();
+                    };
+                    var intercalCounter = 0;
+                    nextend.fontInterval = setInterval(function() {
+                        if (intercalCounter > 3 || document.documentElement.className.indexOf('wf-active') !== -1) {
+                            nextend.fontsLoadedActive();
+                            clearInterval(nextend.fontInterval);
+                        }
+                        intercalCounter++;
+                    }, 1000);
+                }
+                new N2Classes.SmartSliderSimple('#n2-ss-10', {
+                    "admin": false,
+                    "translate3d": 1,
+                    "callbacks": "",
+                    "randomize": {
+                        "randomize": 0,
+                        "randomizeFirst": 0
+                    },
+                    "align": "normal",
+                    "isDelayed": 0,
+                    "load": {
+                        "fade": 1,
+                        "scroll": 0
+                    },
+                    "playWhenVisible": 1,
+                    "playWhenVisibleAt": 0.5,
+                    "responsive": {
+                        "desktop": 1,
+                        "tablet": 1,
+                        "mobile": 1,
+                        "onResizeEnabled": true,
+                        "type": "fullwidth",
+                        "downscale": 1,
+                        "upscale": 1,
+                        "minimumHeight": 0,
+                        "maximumHeight": 3000,
+                        "maximumSlideWidth": 3000,
+                        "maximumSlideWidthLandscape": 3000,
+                        "maximumSlideWidthTablet": 3000,
+                        "maximumSlideWidthTabletLandscape": 3000,
+                        "maximumSlideWidthMobile": 3000,
+                        "maximumSlideWidthMobileLandscape": 3000,
+                        "maximumSlideWidthConstrainHeight": 0,
+                        "forceFull": 1,
+                        "forceFullHorizontalSelector": "",
+                        "constrainRatio": 1,
+                        "verticalOffsetSelectors": "",
+                        "focusUser": 0,
+                        "focusAutoplay": 0,
+                        "deviceModes": {
+                            "desktopPortrait": 1,
+                            "desktopLandscape": 0,
+                            "tabletPortrait": 1,
+                            "tabletLandscape": 0,
+                            "mobilePortrait": 1,
+                            "mobileLandscape": 0
+                        },
+                        "normalizedDeviceModes": {
+                            "unknownUnknown": ["unknown", "Unknown"],
+                            "desktopPortrait": ["desktop", "Portrait"],
+                            "desktopLandscape": ["desktop", "Portrait"],
+                            "tabletPortrait": ["tablet", "Portrait"],
+                            "tabletLandscape": ["tablet", "Portrait"],
+                            "mobilePortrait": ["mobile", "Portrait"],
+                            "mobileLandscape": ["mobile", "Portrait"]
+                        },
+                        "verticalRatioModifiers": {
+                            "unknownUnknown": 1,
+                            "desktopPortrait": 1,
+                            "desktopLandscape": 1,
+                            "tabletPortrait": 1,
+                            "tabletLandscape": 1,
+                            "mobilePortrait": 1,
+                            "mobileLandscape": 1
+                        },
+                        "minimumFontSizes": {
+                            "desktopPortrait": 1,
+                            "desktopLandscape": 1,
+                            "tabletPortrait": 1,
+                            "tabletLandscape": 1,
+                            "mobilePortrait": 1,
+                            "mobileLandscape": 1
+                        },
+                        "ratioToDevice": {
+                            "Portrait": {
+                                "tablet": 0.7,
+                                "mobile": 0.5
+                            },
+                            "Landscape": {
+                                "tablet": 0,
+                                "mobile": 0
+                            }
+                        },
+                        "sliderWidthToDevice": {
+                            "desktopPortrait": 1920,
+                            "desktopLandscape": 1920,
+                            "tabletPortrait": 1344,
+                            "tabletLandscape": 0,
+                            "mobilePortrait": 960,
+                            "mobileLandscape": 0
+                        },
+                        "basedOn": "combined",
+                        "tabletPortraitScreenWidth": 800,
+                        "mobilePortraitScreenWidth": 440,
+                        "tabletLandscapeScreenWidth": 800,
+                        "mobileLandscapeScreenWidth": 440,
+                        "orientationMode": "width_and_height",
+                        "scrollFix": 0,
+                        "overflowHiddenPage": 0,
+                        "desktopPortraitScreenWidth": 1200
+                    },
+                    "controls": {
+                        "scroll": 0,
+                        "drag": 1,
+                        "touch": "horizontal",
+                        "keyboard": 1,
+                        "tilt": 0
+                    },
+                    "lazyLoad": 0,
+                    "lazyLoadNeighbor": 0,
+                    "blockrightclick": 0,
+                    "maintainSession": 0,
+                    "autoplay": {
+                        "enabled": 1,
+                        "start": 1,
+                        "duration": 8000,
+                        "autoplayToSlide": -1,
+                        "autoplayToSlideIndex": -1,
+                        "allowReStart": 0,
+                        "pause": {
+                            "click": 0,
+                            "mouse": "enter",
+                            "mediaStarted": 1
+                        },
+                        "resume": {
+                            "click": 0,
+                            "mouse": "0",
+                            "mediaEnded": 1,
+                            "slidechanged": 0
+                        }
+                    },
+                    "layerMode": {
+                        "playOnce": 0,
+                        "playFirstLayer": 1,
+                        "mode": "skippable",
+                        "inAnimation": "mainInEnd"
+                    },
+                    "parallax": {
+                        "enabled": 1,
+                        "mobile": 0,
+                        "is3D": 0,
+                        "animate": 1,
+                        "horizontal": "mouse",
+                        "vertical": "mouse",
+                        "origin": "slider",
+                        "scrollmove": "both"
+                    },
+                    "background.parallax.tablet": 1,
+                    "background.parallax.mobile": 1,
+                    "postBackgroundAnimations": 0,
+                    "initCallbacks": [],
+                    "allowBGImageAttachmentFixed": false,
+                    "bgAnimations": 0,
+                    "mainanimation": {
+                        "type": "horizontal",
+                        "duration": 800,
+                        "delay": 0,
+                        "ease": "easeOutQuad",
+                        "parallax": 1,
+                        "shiftedBackgroundAnimation": "auto"
+                    },
+                    "carousel": 1,
+                    "dynamicHeight": 0
+                });
+                new N2Classes.SmartSliderWidgetArrowImage("n2-ss-10", 1, 0.7, 0.5);
+            });
+        }));
+    </script>
+</head>
+
+<body>
+
+    <!-- Nextend Smart Slider 3 #10 - BEGIN -->
+    <div id="n2-ss-10-align" class="n2-ss-align">
+        <div class="n2-padding">
+            <div id="n2-ss-10" class="n2-ss-slider n2-ow n2-has-hover n2notransition n2-ss-load-fade " data-minFontSizedesktopPortrait="1" data-minFontSizedesktopLandscape="1" data-minFontSizetabletPortrait="1" data-minFontSizetabletLandscape="1" data-minFontSizemobilePortrait="1"
+                data-minFontSizemobileLandscape="1" style="font-size: 16px;" data-fontsize="16">
+                <div class="n2-ss-slider-1 n2-ss-swipe-element n2-ow" style="">
+                    <div class="n2-ss-slider-2 n2-ow">
+                        <div class="n2-ss-slider-3 n2-ow" style="">
+
+                            <div class="n2-ss-slide-backgrounds"></div>
+                            <div data-first="1" data-slide-duration="0" data-id="42" class="n2-ss-slide n2-ss-canvas n2-ow  n2-ss-slide-42" style="">
+                                <div data-hash="f8ea37ea2bfd660ff66857e9c2170aef" data-desktop="images/slide-1.jpg" class="n2-ss-slide-background n2-ow" data-opacity="1" data-blur="0" data-mode="fill" data-x="50" data-y="50">
+                                    <div class="n2-ss-slide-background-mask" style=""><img title="" src="images/slide-1.jpg" alt="" /></div>
+                                </div>
+                                <div class="n2-ss-layers-container n2-ow" data-csstextalign="center" style="">
+                                    <div class="n2-ss-section-outer" style="">
+                                        <div class="n2-ss-layer n2-ow" style="overflow:;" data-csstextalign="inherit" data-desktopportraitmaxwidth="0" data-cssselfalign="inherit" data-desktopportraitselfalign="inherit" data-pm="content" data-desktopportraitpadding="10|*|10|*|10|*|10|*|px+"
+                                            data-desktopportraitinneralign="inherit" data-type="content" data-rotation="0" data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1"
+                                            data-adaptivefont="1" data-desktopportraitfontsize="100" data-plugin="rendered">
+                                            <div class="n2-ss-section-main-content n2-ss-layer-content n2-ow" style="padding:0.625em 0.625em 0.625em 0.625em ;" data-verticalalign="center">
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJsdXIiLCJvcGFjaXR5IjowLCJuMmJsdXIiOjEwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-5dc942040c26e95701171406b7db0c1a-paragraph   n2-ow">Cool & Smooth Banner Slider</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJsdXIiLCJkZWxheSI6MC4xLCJvcGFjaXR5IjowLCJuMmJsdXIiOjEwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-c319e220a536eb99afa661220e983b9d-paragraph   n2-ow">Flat Design, Creative Blog Style</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJsdXIiLCJkZWxheSI6MC4yLCJvcGFjaXR5IjowLCJuMmJsdXIiOjEwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-5dc942040c26e95701171406b7db0c1a-paragraph   n2-ow">Beautifully crafted, responsive design</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth  n2-ss-layer-needsize" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;height:0.4375em;max-width: 80px;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+"
+                                                    data-desktopportraitheight="7" data-desktopportraitmaxwidth="80" data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJsdXIiLCJkZWxheSI6MC4zLCJvcGFjaXR5IjowLCJuMmJsdXIiOjEwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ow" style="background-color: #cc2929;background-color: RGBA(204,41,41,1);height:100%;border-radius:10px"></div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJsdXIiLCJkZWxheSI6MC40LCJvcGFjaXR5IjowLCJuMmJsdXIiOjEwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-5dc942040c26e95701171406b7db0c1a-paragraph   n2-ow">made with love...</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJsdXIiLCJkZWxheSI6MC41LCJvcGFjaXR5IjowLCJuMmJsdXIiOjEwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ss-button-container n2-ow n2-font-13ab1dc09f48e0951d33464923c1b704-link  n2-ss-nowrap"><a class="n2-style-6e7e81a6399b8836419afd9a49b7b3e2-heading  n2-ow " onclick="return false;" href="#"><span><span>PURCHASE</span></span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-slide-duration="0" data-id="44" class="n2-ss-slide n2-ss-canvas n2-ow  n2-ss-slide-44" style="">
+                                <div data-hash="af60735f9e3b09bc4f2d9b74c5182f31" data-desktop="images/slide-2.jpg" class="n2-ss-slide-background n2-ow" data-opacity="1" data-blur="0" data-mode="fill" data-x="50" data-y="50">
+                                    <div class="n2-ss-slide-background-mask" style=""><img title="" src="images/slide-2.jpg" alt="" /></div>
+                                </div>
+                                <div class="n2-ss-layers-container n2-ow" data-csstextalign="center" style="">
+                                    <div class="n2-ss-section-outer" style="">
+                                        <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth " style="max-width: 1140px;overflow:;" data-csstextalign="inherit" data-desktopportraitmaxwidth="1140" data-tabletportraitmaxwidth="0" data-mobileportraitmaxwidth="0"
+                                            data-cssselfalign="inherit" data-desktopportraitselfalign="inherit" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-pm="content" data-desktopportraitpadding="10|*|5|*|10|*|5|*|px+"
+                                            data-tabletportraitpadding="10|*|5|*|10|*|5|*|px+" data-mobileportraitpadding="40|*|0|*|40|*|0|*|px+" data-desktopportraitinneralign="inherit" data-tabletportraitinneralign="left" data-mobileportraitinneralign="inherit"
+                                            data-type="content" data-rotation="0" data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                            data-plugin="rendered">
+                                            <div class="n2-ss-section-main-content n2-ss-layer-content n2-ow" style="padding:0.625em 0.3125em 0.625em 0.3125em ;" data-verticalalign="center">
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="left" data-desktopportraitselfalign="left" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJsb29wUmVwZWF0U2VsZk9ubHkiOm51bGwsImluIjpbeyJuYW1lIjoiUmlnaHQgZmFkZSIsIm9wYWNpdHkiOjAsIngiOi00MDB9XX0="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-e26f9fc0e4aacb0192eeeef97f36705d-paragraph   n2-ow">Super powerful & easy to use theme</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.234375em 0.234375em 0.234375em 0.234375em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0"
+                                                    data-desktopportraitmaxwidth="0" data-cssselfalign="left" data-desktopportraitselfalign="left" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0"
+                                                    data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJsb29wUmVwZWF0U2VsZk9ubHkiOm51bGwsImluIjpbeyJuYW1lIjoiUmlnaHQgZmFkZSIsImRlbGF5IjowLjE1LCJvcGFjaXR5IjowLCJ4IjotNDAwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="80"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-aa1ba26b83562056399325c10147b659-paragraph   n2-ow">Fluid, Responsive, Retina-Ready</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="left" data-desktopportraitselfalign="left" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJsb29wUmVwZWF0U2VsZk9ubHkiOm51bGwsImluIjpbeyJuYW1lIjoiUmlnaHQgZmFkZSIsImRlbGF5IjowLjMsIm9wYWNpdHkiOjAsIngiOi00MDB9XX0="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-d71adf8a9c102589b064fa239972a143-paragraph   n2-ow">Multipurpose HTML Theme!</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth  n2-ss-layer-needsize" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;height:0.4375em;max-width: 80px;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="7" data-desktopportraitmaxwidth="80" data-cssselfalign="left" data-desktopportraitselfalign="left" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlJpZ2h0IGZhZGUiLCJkZWxheSI6MC40LCJvcGFjaXR5IjowLCJ4IjotNDAwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ow" style="background-color: #cc2929;background-color: RGBA(204,41,41,1);height:100%;border-radius:10px"></div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="left" data-desktopportraitselfalign="left" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlJpZ2h0IGZhZGUiLCJkZWxheSI6MC40NSwib3BhY2l0eSI6MCwieCI6LTQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-e26f9fc0e4aacb0192eeeef97f36705d-paragraph   n2-ow">made with love...</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="03|*|03|*|03|*|03|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="left" data-desktopportraitselfalign="left" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlJpZ2h0IGZhZGUiLCJkZWxheSI6MC41LCJvcGFjaXR5IjowLCJ4IjotNDAwfV19"
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ss-button-container n2-ow n2-font-2ef065763e81746d53de289375cb8532-link  n2-ss-nowrap"><a class="n2-style-bfd939fac37975aea40e94c2b59db6f6-heading  n2-ow " onclick="return false;" href="#"><span><span>PURCHASE</span></span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-slide-duration="0" data-id="58" class="n2-ss-slide n2-ss-canvas n2-ow  n2-ss-slide-58" style="">
+                                <div data-hash="224e70290582f94b97bafd42237a697d" data-desktop="images/slide-3.jpg" class="n2-ss-slide-background n2-ow" data-opacity="1" data-blur="0" data-mode="fill" data-x="50" data-y="50">
+                                    <div class="n2-ss-slide-background-mask" style=""><img title="" src="images/slide-3.jpg" alt="" /></div>
+                                </div>
+                                <div class="n2-ss-layers-container n2-ow" data-csstextalign="center" style="">
+                                    <div class="n2-ss-section-outer" style="">
+                                        <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth " style="max-width: 1140px;overflow:;" data-csstextalign="right" data-desktopportraitmaxwidth="1140" data-tabletportraitmaxwidth="0" data-mobileportraitmaxwidth="0" data-cssselfalign="inherit"
+                                            data-desktopportraitselfalign="inherit" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-pm="content" data-desktopportraitpadding="10|*|5|*|10|*|5|*|px+" data-tabletportraitpadding="60|*|45|*|60|*|45|*|px+"
+                                            data-mobileportraitpadding="10|*|5|*|10|*|5|*|px+" data-desktopportraitinneralign="right" data-tabletportraitinneralign="right" data-mobileportraitinneralign="center" data-type="content" data-rotation="0" data-desktopportrait="1"
+                                            data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100" data-tabletportraitfontsize="100"
+                                            data-plugin="rendered">
+                                            <div class="n2-ss-section-main-content n2-ss-layer-content n2-ow" style="padding:0.625em 0.3125em 0.625em 0.3125em ;" data-verticalalign="center">
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="right" data-desktopportraitselfalign="right" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkxlZnQgZmFkZSIsIm9wYWNpdHkiOjAsIngiOjQwMH1dfQ==" data-desktopportrait="1"
+                                                    data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100" data-mobileportraitfontsize="80"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-bbd981028daeeaef4dcc2e070f5e4930-paragraph   n2-ow">Get an awesome Layers theme</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="right" data-desktopportraitselfalign="right" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkxlZnQgZmFkZSIsImRlbGF5IjowLjE1LCJvcGFjaXR5IjowLCJ4Ijo0MDB9XX0="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-fd664e78d2fc72f4e3a11c64f15f0ae6-paragraph   n2-ow">6+ HTML pages build </p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="right" data-desktopportraitselfalign="right" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiMHwqfDB8KnwwIiwiaW4iOlt7Im5hbWUiOiJSb3RhdGUgdG9wIGxlZnQiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MCwicm90YXRpb25aIjo5MH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-2609916c9e0c2e31e3d9164e300d5e82-paragraph   n2-ow">Easy customization</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth  n2-ss-layer-needsize" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;height:0.4375em;max-width: 80px;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+" data-desktopportraitheight="7" data-desktopportraitmaxwidth="80" data-tabletportraitmaxwidth="80" data-mobileportraitmaxwidth="80" data-cssselfalign="right"
+                                                    data-desktopportraitselfalign="right" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkxlZnQgZmFkZSIsImRlbGF5IjowLjQsIm9wYWNpdHkiOjAsIngiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ow" style="background-color: #cc2929;background-color: RGBA(204,41,41,1);height:100%;border-radius:10px"></div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="right" data-desktopportraitselfalign="right" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkxlZnQgZmFkZSIsImRlbGF5IjowLjQ1LCJvcGFjaXR5IjowLCJ4Ijo0MDB9XX0="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-bbd981028daeeaef4dcc2e070f5e4930-paragraph   n2-ow">made with love...</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="right" data-desktopportraitselfalign="right" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkxlZnQgZmFkZSIsImRlbGF5IjowLjUsIm9wYWNpdHkiOjAsIngiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ss-button-container n2-ow n2-font-13ab1dc09f48e0951d33464923c1b704-link  n2-ss-nowrap"><a class="n2-style-bfd939fac37975aea40e94c2b59db6f6-heading  n2-ow " onclick="return false;" href="#"><span><span>PURCHASE</span></span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-slide-duration="0" data-id="60" class="n2-ss-slide n2-ss-canvas n2-ow  n2-ss-slide-60" style="">
+                                <div data-hash="bd0526191744cc0ac1fbbe634880b402" data-desktop="images/slide-4.jpg" class="n2-ss-slide-background n2-ow" data-opacity="1" data-blur="0" data-mode="fill" data-x="50" data-y="50">
+                                    <div class="n2-ss-slide-background-mask" style=""><img title="" src="images/slide-4.jpg" alt="" /></div>
+                                </div>
+                                <div class="n2-ss-layers-container n2-ow" data-csstextalign="center" style="">
+                                    <div class="n2-ss-section-outer" style="">
+                                        <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth " style="max-width: 1140px;overflow:;" data-csstextalign="center" data-desktopportraitmaxwidth="1140" data-tabletportraitmaxwidth="0" data-mobileportraitmaxwidth="0"
+                                            data-cssselfalign="center" data-desktopportraitselfalign="center" data-pm="content" data-desktopportraitpadding="45|*|5|*|45|*|5|*|px+" data-tabletportraitpadding="30|*|5|*|30|*|5|*|px+" data-mobileportraitpadding="25|*|10|*|25|*|10|*|px+"
+                                            data-desktopportraitinneralign="center" data-tabletportraitinneralign="center" data-type="content" data-rotation="0" data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100" data-tabletportraitfontsize="100" data-plugin="rendered">
+                                            <div class="n2-ss-section-main-content n2-ss-layer-content n2-ow" style="padding:2.8125em 0.3125em 2.8125em 0.3125em ;" data-verticalalign="center">
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="center" data-desktopportraitselfalign="center" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlRvcCBmYWRlIiwiZGVsYXkiOjAuMzUsIm9wYWNpdHkiOjAsInkiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-bbd981028daeeaef4dcc2e070f5e4930-paragraph   n2-ow">Fontawesome, Smooth color</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0em 0em 0em 0em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="0|*|0|*|0|*|0|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0"
+                                                    data-cssselfalign="center" data-desktopportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlRvcCBmYWRlIiwiZGVsYXkiOjAuMjUsIm9wYWNpdHkiOjAsInkiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ss-mobile n2-ow n2-ow-all">
+                                                        <p class="n2-font-fd664e78d2fc72f4e3a11c64f15f0ae6-paragraph   n2-ow">Fully documented, well-coded </p>
+                                                    </div>
+                                                    <div class="n2-ss-tablet n2-ow n2-ow-all">
+                                                        <p class="n2-font-fd664e78d2fc72f4e3a11c64f15f0ae6-paragraph   n2-ow">Fully documented, well-coded </p>
+                                                    </div>
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop">
+                                                        <p class="n2-font-fd664e78d2fc72f4e3a11c64f15f0ae6-paragraph   n2-ow">Fully documented, well-coded </p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="center" data-desktopportraitselfalign="center" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlRvcCBmYWRlIiwiZGVsYXkiOjAuMTUsIm9wYWNpdHkiOjAsInkiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="70" data-plugin="rendered">
+                                                    <div class="n2-ss-mobile n2-ow n2-ow-all">
+                                                        <p class="n2-font-2609916c9e0c2e31e3d9164e300d5e82-paragraph   n2-ow">Premium HTML5 Template</p>
+                                                    </div>
+                                                    <div class="n2-ss-tablet n2-ow n2-ow-all">
+                                                        <p class="n2-font-2609916c9e0c2e31e3d9164e300d5e82-paragraph   n2-ow">Premium HTML5 Template</p>
+                                                    </div>
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop">
+                                                        <p class="n2-font-2609916c9e0c2e31e3d9164e300d5e82-paragraph   n2-ow">Premium HTML5 Template</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="center" data-desktopportraitselfalign="center" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlRvcCBmYWRlIiwiZGVsYXkiOjAuMzUsIm9wYWNpdHkiOjAsInkiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-bbd981028daeeaef4dcc2e070f5e4930-paragraph   n2-ow">And Much Much More....</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow n2-ss-has-maxwidth  n2-ss-layer-needsize" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;height:0.4375em;max-width: 80px;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+" data-desktopportraitheight="7" data-desktopportraitmaxwidth="80" data-tabletportraitmaxwidth="80" data-mobileportraitmaxwidth="80" data-cssselfalign="center"
+                                                    data-desktopportraitselfalign="center" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IlRvcCBmYWRlIiwiZGVsYXkiOjAuMDUsIm9wYWNpdHkiOjAsInkiOjQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ow" style="background-color: #cc2929;background-color: RGBA(204,41,41,1);height:100%;border-radius:10px"></div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:12.5em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="200|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="40|*|3|*|3|*|3|*|px+"
+                                                    data-mobileportraitmargin="3|*|3|*|3|*|3|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="center" data-desktopportraitselfalign="center" data-tabletportraitselfalign="center"
+                                                    data-mobileportraitselfalign="center" data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJvdHRvbSBmYWRlIiwib3BhY2l0eSI6MCwieSI6LTQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100"
+                                                    data-mobileportraitfontsize="80" data-plugin="rendered">
+                                                    <div class="n2-ow n2-ow-all n2-ss-desktop n2-ss-mobile n2-ss-tablet">
+                                                        <p class="n2-font-e50a50ea71125cc71bfa7fe4201cc43f-paragraph   n2-ow">made with love...</p>
+                                                    </div>
+                                                </div>
+                                                <div class="n2-ss-layer n2-ow" style="margin:0.1875em 0.1875em 0.1875em 0.1875em ;overflow:visible;" data-pm="normal" data-desktopportraitmargin="3|*|3|*|3|*|3|*|px+" data-tabletportraitmargin="3|*|3|*|3|*|3|*|px+"
+                                                    data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="center" data-desktopportraitselfalign="center" data-tabletportraitselfalign="center" data-mobileportraitselfalign="center"
+                                                    data-type="layer" data-rotation="0" data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6IkJvdHRvbSBmYWRlIiwiZGVsYXkiOjAuMSwib3BhY2l0eSI6MCwieSI6LTQwMH1dfQ=="
+                                                    data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="1" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100"
+                                                    data-plugin="rendered">
+                                                    <div class="n2-ss-button-container n2-ow n2-font-13ab1dc09f48e0951d33464923c1b704-link  n2-ss-nowrap"><a class="n2-style-bfd939fac37975aea40e94c2b59db6f6-heading  n2-ow " onclick="return false;" href="#"><span><span>PURCHASE</span></span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-ssleft="0+15" data-sstop="height/2-previousheight/2" id="n2-ss-10-arrow-previous" class="n2-ss-widget n2-ss-widget-display-desktop n2-ss-widget-display-tablet n2-ss-widget-display-mobile nextend-arrow n2-ib n2-ow nextend-arrow-previous  nextend-arrow-animated-fade"
+                        style="position: absolute;" role="button" aria-label="Previous slide" tabindex="0"><img class="n2-ow" data-no-lazy="1" data-hack="data-lazy-src" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDMzIDE1Ljk5MkwyMi42OSA1LjcxMmMuMzkzLS4zOS4zOTMtMS4wMyAwLTEuNDItLjM5My0uMzktMS4wMy0uMzktMS40MjMgMGwtMTEuOTggMTAuOTRjLS4yMS4yMS0uMy40OS0uMjg1Ljc2LS4wMTUuMjguMDc1LjU2LjI4NC43N2wxMS45OCAxMC45NGMuMzkzLjM5IDEuMDMuMzkgMS40MjQgMCAuMzkzLS40LjM5My0xLjAzIDAtMS40MmwtMTEuMjU3LTEwLjI5IiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjgiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="
+                            alt="Arrow" /></div>
+                    <div data-ssright="0+15" data-sstop="height/2-nextheight/2" id="n2-ss-10-arrow-next" class="n2-ss-widget n2-ss-widget-display-desktop n2-ss-widget-display-tablet n2-ss-widget-display-mobile nextend-arrow n2-ib n2-ow nextend-arrow-next  nextend-arrow-animated-fade"
+                        style="position: absolute;" role="button" aria-label="Next slide" tabindex="0"><img class="n2-ow" data-no-lazy="1" data-hack="data-lazy-src" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuNzIyIDQuMjkzYy0uMzk0LS4zOS0xLjAzMi0uMzktMS40MjcgMC0uMzkzLjM5LS4zOTMgMS4wMyAwIDEuNDJsMTEuMjgzIDEwLjI4LTExLjI4MyAxMC4yOWMtLjM5My4zOS0uMzkzIDEuMDIgMCAxLjQyLjM5NS4zOSAxLjAzMy4zOSAxLjQyNyAwbDEyLjAwNy0xMC45NGMuMjEtLjIxLjMtLjQ5LjI4NC0uNzcuMDE0LS4yNy0uMDc2LS41NS0uMjg2LS43NkwxMC43MiA0LjI5M3oiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuOCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+"
+                            alt="Arrow" /></div>
+                </div>
+            </div>
+            <div class="n2-clear"></div>
+            <div id="n2-ss-10-spinner" style="display: none;">
+                <div>
+                    <div class="n2-ss-spinner-simple-white-container">
+                        <div class="n2-ss-spinner-simple-white"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="n2-ss-10-placeholder" style="position: relative;z-index:2;"><img style="width: 100%; max-width:3000px; display: block;" class="n2-ow" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMCIgd2lkdGg9IjE5MjAiIGhlaWdodD0iNzAwIiA+PC9zdmc+" alt="Slider" /></div>
+    <!-- Nextend Smart Slider 3 #10 - END -->
+</body>
+
+</html>

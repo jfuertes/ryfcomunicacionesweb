@@ -1,0 +1,151 @@
+extends ../layout/home.pug
+block view
+  // HEADER END
+  section.featured-img.text-center.price-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 PRICE & PACKAGES
+            ul
+              li
+                a(href='index.html') Home
+              li
+                span -
+              li
+                span Price
+  // PAGE CONTENT START
+  section#price.section-wrapper.gray-background
+    .container
+      .row
+        .col-lg-12.heding-wrapper.text-center.scale-less.animate-in
+          span PRICES
+          h2 Plans and Packages
+          span.spliter
+      .row.price-wrapper.text-center
+        .col-lg-4.col-md-4.col-sm-12
+          .price-holder.heding-wrapper.text-center.scale-less.animate-in
+            .name BASIC
+            .price $35
+            span.spliter
+            ul
+              li Lorem Ipsum is simply dummy
+              li Text of the printing and
+              li Typesetting industry. Lorem
+              li Ipsum has been the industry's
+              li Standard dummy text ever since
+            a.btn.light.border-1.p10-50(href='#') Get a Quote!
+        .col-lg-4.col-md-4.col-sm-12
+          .price-holder.heding-wrapper.text-center.scale-less.animate-in
+            .name POPULAR
+            .price $75
+            span.spliter
+            ul
+              li Lorem Ipsum is simply dummy
+              li Text of the printing and
+              li Typesetting industry. Lorem
+              li Ipsum has been the industry's
+              li Standard dummy text ever since
+            a.btn.light.border-1.p10-50(href='#') Get a Quote!
+        .col-lg-4.col-md-4.col-sm-12
+          .price-holder.heding-wrapper.text-center.scale-less.animate-in
+            .name PREMIER
+            .price $95
+            span.spliter
+            ul
+              li Lorem Ipsum is simply dummy
+              li Text of the printing and
+              li Typesetting industry. Lorem
+              li Ipsum has been the industry's
+              li Standard dummy text ever since
+            a.btn.light.border-1.p10-50(href='#') Get a Quote!
+  // PAGE CONTENT END
+  // SPECILIZE SECTION START
+  section.section-wrapper.p0.flex.block-768
+    .w50p.w100p-768.flex.jc-flex-end.block-768
+      .mw585.mw100p-768.pt50.pr50.pb50.pl15.pr15-768
+        .heding-wrapper.pt0.priority.scale-less.animate-in
+          span SPECIALISED IN
+          h2 Our Expertise
+          span.spliter
+        .specilize-wrapper
+          .h6
+            | Consectetur adipiscing elit. Fusce nisi enim, Vulputate at Justo tristique, Tempor Sagittis Dolor.
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            strong quis no strud exercitation ullamco
+            |  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    .w50p.w100p-768.theme-background.about-skills.flex.jd-column.jc-center.block-768
+      .pt50.pr50.pb50.pl50.pl15-768.pr15-768
+        .specilize-wrapper
+          .skills-slider-holder.skills-start
+            .progress.skill-bar.animate-in
+              .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100')
+                .skill
+                  | HTML
+                  .val 100%
+            .progress.skill-bar.animate-in
+              .progress-bar(role='progressbar', aria-valuenow='90', aria-valuemin='0', aria-valuemax='100')
+                .skill
+                  | PHOTOSHOP
+                  .val 90%
+            .progress.skill-bar.animate-in
+              .progress-bar(role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100')
+                .skill
+                  | WORDPRESS
+                  .val 75%
+            .progress.skill-bar.animate-in
+              .progress-bar(role='progressbar', aria-valuenow='55', aria-valuemin='0', aria-valuemax='100')
+                .skill
+                  | PHP
+                  .val 55%
+  // SPECILIZE SECTION END
+  // TESTIMONIALS SECTION START
+  section
+    .testimonial-wrapper.parallax(data-stellar-background-ratio='0.1', style='background-image: url(assets/images/testimonial-bg.jpg);')
+      .overlay
+        .container
+          .row
+            .testimonial-slider.owl-carousel.owl-theme.col-md-8.col-sm-12
+              .item
+                .avatar
+                  .author
+                    img(src='assets/images/testimonial-1.jpg', alt='avatar', width='70', height='70')
+                .testimonial-content
+                  .name JACK LONDON
+                  .job Graphic Designer
+                  span.spliter
+                  div
+                    | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+              .item
+                .avatar
+                  .author
+                    img(src='assets/images/testimonial-1.jpg', alt='avatar', width='70', height='70')
+                .testimonial-content
+                  .name JACK LONDON
+                  .job Graphic Designer
+                  span.spliter
+                  div
+                    | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+              .item
+                .avatar
+                  .author
+                    img(src='assets/images/testimonial-1.jpg', alt='avatar', width='70', height='70')
+                .testimonial-content
+                  .name JACK LONDON
+                  .job Graphic Designer
+                  span.spliter
+                  div
+                    | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+  // TESTIMONIALS SECTION END
+  // WANT WORK SECTION START
+  section.want-wrapper.theme-background
+    .container
+      .row.text-left.scale-less.animate-in
+        .col-sm-9
+          .h2 WANT TO WORK WITH US
+          span You can contact us to talk more about your project 
+        .col-sm-3
+          a.btn.light.p10-50(href='contact.html') CONTACT US NOW!
+  // WANT WORK SECTION END

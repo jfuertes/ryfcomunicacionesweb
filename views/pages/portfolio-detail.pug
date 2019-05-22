@@ -1,0 +1,59 @@
+extends ../layout/home.pug
+block view
+
+  // HEADER END
+  section.featured-img.text-center.portfolio-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 WEB DEVELOPMENT
+            ul
+              li
+                a(href='index.html') Home
+              li
+                span -
+              li
+                a(href='portfolio.html') Portfolio
+              li
+                span -
+              li
+                span Web Development
+  // PAGE CONTENT START
+  section.page-content.detail-page
+    .container.page-content-wrapper
+      .row
+        .col-sm-12
+          .detail-page-feature
+            img(src='assets/images/portfolio-detail-1.jpg', alt='services-detail-img')
+      .row.portfolio-detail-wrapper
+        .col-sm-9
+          h1 Project Title
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugit perferendis quam quis. Ab alias amet animi, dicta dol oremque dolorum explicabo, facere in incidunt inventore ipsam modi molestias nemo neque nisi non nulla omnis perspici atis quasi qui repellat reprehenderit temporibus vitae. Adipisci eveniet facere illum optio, quos rem rerum
+          p
+            | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugit perferendis quam quis. Ab alias amet animi, dicta dol oremque dolorum explicabo, facere in incidunt inventore ipsam modi molestias nemo neque nisi non nulla omnis perspici atis quasi qui repellat reprehenderit temporibus vitae. Adipisci eveniet facere illum optio, quos rem rerum
+        .col-sm-3
+          aside
+            .h6 Client
+            span Envato Studio
+            .h6 Date
+            span May 18, 2015
+            .h6 What we made
+            span Website, Business Cards and Logo
+            .h6 Tags
+            span Design, Print, Graphic
+  // PAGE CONTENT END
+  // WANT WORK SECTION START
+  section.want-wrapper.theme-background
+    .container
+      .row.text-left.scale-less.animate-in
+        .col-sm-9
+          .h3 WANT TO WORK WITH US
+          span You can contact us to talk more about your project 
+        .col-sm-3
+          a.btn.light.p10-50(href='contact.html') CONTACT US NOW!
+  // WANT WORK SECTION END

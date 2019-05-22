@@ -1,0 +1,153 @@
+extends ../layout/home.pug
+block view
+  // HEADER END
+  section.featured-img.text-center.services-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 INTEGER ERAT LIBERO, MOLESTIE ET.
+            ul
+              li
+                a(href='index.html') Home
+              li
+                span -
+              li
+                a(href='blog.html') Blog
+              li
+                span -
+              li
+                span Integer Erat Libero, Molestie Et.
+  // PAGE CONTENT START
+  section.page-content.detail-page
+    .container.page-content-wrapper
+      .row
+        .col-sm-9.col-sm-push-3
+          .blog-post-holder.single-post
+            .detail-page-feature
+              a(href='blog-detail.html')
+                img(src='assets/images/inner-blog-1.jpeg', alt='services-detail-img')
+            h1 Integer Erat Libero, Molestie Et.
+            p
+              span.meta-item.meta-date
+                i.fa.fa-calendar
+                |  18 May 2015
+              span.meta-item.meta-author
+                i.fa.fa-user
+                a(rel='author', href='#') xlwproot
+              span.meta-item.meta-category
+                i.fa.fa-folder-open-o
+                a(href='#') Blog
+            p
+              | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugit perferendis quam quis. Ab alias amet animi, dicta dol oremque dolorum explicabo, facere in incidunt inventore ipsam modi molestias nemo neque nisi non nulla omnis perspici atis quasi qui repellat reprehenderit temporibus vitae. Adipisci eveniet facere illum optio, quos rem rerum
+            p
+              | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugit perferendis quam quis. Ab alias amet animi, dicta dol oremque dolorum explicabo, facere in incidunt inventore ipsam modi molestias nemo neque nisi non nulla omnis perspici atis quasi qui repellat reprehenderit temporibus vitae. Adipisci eveniet facere illum optio, quos rem rerum
+            p
+              | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugit perferendis quam quis. Ab alias amet animi, dicta dol oremque dolorum explicabo, facere in incidunt inventore ipsam modi molestias nemo neque nisi non nulla omnis perspici atis quasi qui repellat reprehenderit temporibus vitae. Adipisci eveniet facere illum optio, quos rem rerum
+          // COMMENTS FORM START
+          #comments.contact-holder
+            .h3 Leave a Comment
+            .row
+              .col-lg-8.col-md-8.col-sm-8.col-xs-12
+                form#comments-form(action='#')
+                  label Name
+                  input(type='text')
+                  label Email
+                  input(type='email')
+                  label Comment
+                  textarea
+                  input.submit.btn.light.p10-50.border-1(type='submit', value='SUBMIT')
+          // COMMENTS FORM END
+        .col-sm-3.col-sm-pull-9
+          aside.widget.services-list
+            .h5  Our Creative Services 
+            span.spliter
+            ul
+              li.active
+                a(href='services-detail.html')
+                  i.fa.fa-check-circle-o
+                  |  Marketing 
+                  i.fa.fa-angle-right
+              li
+                a(href='services-detail.html')
+                  i.fa.fa-check-circle-o
+                  |  Web Design 
+                  i.fa.fa-angle-right
+              li
+                a(href='services-detail.html')
+                  i.fa.fa-check-circle-o
+                  |  Web Development 
+                  i.fa.fa-angle-right
+              li
+                a(href='services-detail.html')
+                  i.fa.fa-check-circle-o
+                  |  Graphic Design 
+                  i.fa.fa-angle-right
+              li
+                a(href='services-detail.html')
+                  i.fa.fa-check-circle-o
+                  |  Branding 
+                  i.fa.fa-angle-right
+              li
+                a(href='services-detail.html')
+                  i.fa.fa-check-circle-o
+                  |  Printing 
+                  i.fa.fa-angle-right
+          aside.widget.recent-post
+            .h5  Recent Posts 
+            span.spliter
+            ul
+              li
+                a(href='blog-detail.html')
+                  img(src='assets/images/sidebar-blog-1.jpg', alt='sidebar-thumbnail')
+                .recent-post-content
+                  a(href='blog-detail.html') Let her go, Granser,Ho Hoo encouraged
+                  span.meta-date May 24, 2015
+              li
+                a(href='blog-detail.html')
+                  img(src='assets/images/sidebar-blog-2.jpg', alt='sidebar-thumbnail')
+                .recent-post-content
+                  a(href='blog-detail.html') Let her go, Granser,Ho Hoo encouraged
+                  span.meta-date May 24, 2015
+              li
+                a(href='blog-detail.html')
+                  img(src='assets/images/sidebar-blog-3.jpg', alt='sidebar-thumbnail')
+                .recent-post-content
+                  a(href='blog-detail.html') Let her go, Granser,Ho Hoo encouraged
+                  span.meta-date May 24, 2015
+          aside.widget.side-testimonials
+            .h5  What our Client Say 
+            span.spliter
+            .testimonial-slider.owl-carousel.owl-theme
+              .item
+                p
+                  | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+                .testi-author-meta
+                  img(src='assets/images/sidebar-testimonial-1.jpg', alt='testimonials-author')
+                  .h2
+                    | Jack London 
+                    small NYC, Studios
+              .item
+                p
+                  | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+                .testi-author-meta
+                  img(src='assets/images/sidebar-testimonial-1.jpg', alt='testimonials-author')
+                  .h2
+                    | Jack London 
+                    small NYC, Studios
+              .item
+                p
+                  | "Let her go, Granser," Hoo-Hoo encouraged; for the old man was already maundering about the  dis respect for elders and the reversion to cruelty of all humans that fell from high culture  to primitive conditions.
+                .testi-author-meta
+                  img(src='assets/images/sidebar-testimonial-1.jpg', alt='testimonials-author')
+                  .h2
+                    | Jack London 
+                    small NYC, Studios
+  // PAGE CONTENT END

@@ -1,0 +1,83 @@
+extends ../layout/home.pug
+block view
+  // HEADER END
+  section.featured-img.text-center.portfolio-bg
+    .overlay
+    .breadcrumbs
+      .table.width-100p.height-100p
+        .table-row
+          .table-cell.align-middle
+            .h4 Galeria
+            ul
+              li
+                a(href='index.html') inicio
+              li
+                span -
+              li
+                span Fotos
+  // PAGE CONTENT START
+  section.page-content
+    .container.page-content-wrapper
+      .row
+        .col-lg-12
+          .portfolio-wrapper
+            .portfolio-list.grid
+              .item.web
+                .portfolio-holder.scale-big.animate-in
+                  figure.imghvr-shutter-out-vert
+                    img.img-responsive(src='assets/images/servicios/redeselectrica.jpg', alt='portfolio-img')
+                    figcaption
+                      .table
+                        .table-row
+                          .table-cell.text-center.align-middle
+                            .subtitle Lorem Ipsum
+                            .title development
+                            .description Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            a.btn.transparent.mt20(href='portfolio-detail.html') Detailed
+                            a.lightbox(data-lightbox='1', href='assets/images/servicios/redeselectrica.jpg')
+                              i.fa.fa-plus
+              .item.web
+                .portfolio-holder.scale-big.animate-in
+                  figure.imghvr-shutter-out-vert
+                    img.img-responsive(src='assets/images/servicios/pozotierra.jpg', alt='portfolio-img')
+                    figcaption
+                      .table
+                        .table-row
+                          .table-cell.text-center.align-middle
+                            .subtitle Lorem Ipsum
+                            .title development
+                            .description Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            a.btn.transparent.mt20(href='portfolio-detail.html') Detailed
+                            a.lightbox(data-lightbox='2', href='assets/images/servicios/pozotierra.jpg')
+                              i.fa.fa-plus
+              .item.photos
+                .portfolio-holder.scale-big.animate-in
+                  figure.imghvr-shutter-out-vert
+                    img.img-responsive(src='assets/images/servicios/aireacon.jpg', alt='portfolio-img')
+                    figcaption
+                      .table
+                        .table-row
+                          .table-cell.text-center.align-middle
+                            .subtitle Lorem Ipsum
+                            .title development
+                            .description Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            a.btn.transparent.mt20(href='portfolio-detail.html') Detailed
+                            a.lightbox(data-lightbox='3', href='assets/images/servicios/aireacon.jpg')
+                              i.fa.fa-plus
+              .item.print
+                .portfolio-holder.scale-big.animate-in
+                  figure.imghvr-shutter-out-vert
+                    img.img-responsive(src='assets/images/servicios/videovigi.jpg', alt='portfolio-img')
+                    figcaption
+                      .table
+                        .table-row
+                          .table-cell.text-center.align-middle
+                            .subtitle Lorem Ipsum
+                            .title development
+                            .description Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            a.btn.transparent.mt20(href='portfolio-detail.html') Detailed
+                            a.lightbox(data-lightbox='4', href='assets/images/servicios/videovigi.jpg')
+                              i.fa.fa-plus
+  // PAGE CONTENT END
+  // TESTIMONIALS SECTION START
+ 

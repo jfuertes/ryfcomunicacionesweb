@@ -1,0 +1,52 @@
+script(src='assets/js/jquery-v1.12.4.min.js')
+script(src='assets/js/modernizr-custom.js')
+script(src='assets/js/jquery.easing.min.js')
+script(src='assets/plugins/OwlCarousel2-master/dist/owl.carousel.min.js')
+script(src='assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js')
+script(src='assets/plugins/lightbox2-master/dist/js/lightbox.min.js')
+script(src='assets/plugins/prettyPhoto/jquery.prettyPhoto.js')
+script(src='assets/js/jquery.viewportchecker.min.js')
+script(src='assets/plugins/stellar.js-master/src/jquery.stellar.js')
+script(src='assets/plugins/velocity-master/velocity.min.js')
+script(src='assets/plugins/muuri-master/muuri.min.js')
+script(src='assets/js/main.js')
+// GOOGLE MAPS
+script.
+  function initialize( ) {
+  var head = document.getElementsByTagName('head')[0];
+  // Save the original method
+  var insertBefore = head.insertBefore;
+  // Replace it!
+  head.insertBefore = function (newElement, referenceElement) {
+  if (newElement.href && newElement.href.indexOf('https://fonts.googleapis.com/css?family=Roboto') === 0) {
+  console.info('Prevented Roboto from loading!');
+  return;
+  }
+  insertBefore.call(head, newElement, referenceElement);
+  };
+  var map = new google.maps.Map( document.getElementById( 'map-canvas' ), {
+  center: { lat: -11.992566, lng: -77.085284 }, 
+  scrollwheel: false,
+  zoom: 13
+  } );
+  var locations = [
+  [ 'RyF COMUNICACIONES.', -11.992566, -77.085284, 4 ],
+  
+  ];
+  var marker, i, infowindow = new google.maps.InfoWindow( );
+  for ( i = 0; i < locations.length; i++ ) {
+  marker = new google.maps.Marker( {
+  icon: 'assets/images/marksm.png',
+  position: new google.maps.LatLng( locations[ i ][ 1 ], locations[ i ][ 2 ] ),
+  map: map,
+  title: locations[ i ][ 0 ]
+  } );
+  google.maps.event.addListener( marker, 'click', ( function( marker, i ) {
+  return function( ) {
+  infowindow.setContent( locations[ i ][ 0 ] );
+  infowindow.open( map, marker );
+  }
+  } )( marker, i ) );
+  }
+  }
+script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCZmDTafrGVYUQqLY7FZXHtc8y16C9UmYk&callback=initialize', async='', defer='')

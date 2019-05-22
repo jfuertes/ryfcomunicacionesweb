@@ -1,0 +1,31 @@
+{
+  "name": "unimap",
+  "version": "1.0.0",
+  "description": "Servicio web para encontrar las rutas de la universidad",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/dahsser/unimap.git"
+  },
+  "author": "Diego Lopez <dilogi7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/dahsser/unimap/issues"
+  },
+  "homepage": "https://gitlab.com/dahsser/unimap#README",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "method-override": "^3.0.0",
+    "mysql": "^2.16.0",
+    "nodemailer": "^6.1.1",
+    "pug": "^2.0.3",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^8.11.1"
+  }
+}

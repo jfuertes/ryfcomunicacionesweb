@@ -1,0 +1,12 @@
+doctype html
+
+
+html(lang='en')
+  head
+    include ../partials/head.pug
+  body.wide
+    .boxed-wrapper
+      include ../partials/header.pug
+      block view
+      include ../partials/footer.pug
+    include ../partials/scripts.pug
